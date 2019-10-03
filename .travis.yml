@@ -1,0 +1,9 @@
+sudo: services
+services:
+  - docker
+
+before_install:
+  - docker build -t damakos/docker-react -f Dockerfile.dev
+
+script:
+  - docker run -e CI=true damakos/docker-react npm run test
